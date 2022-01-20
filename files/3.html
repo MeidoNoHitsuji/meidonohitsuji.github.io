@@ -1,0 +1,439 @@
+<html>
+<head>
+
+
+<SCRIPT>
+<!-- Activate Cloaking Device
+//******************************* ***************************** *******************************
+//
+// Another Date & Time Display
+//
+// Developed by Timothy Wallace , timothy@essex1.com
+//
+//******************************* ****************************** *****************************
+
+// Global variables for timer.
+var timerID = null;
+var timerRunning = false;
+
+function startclock () 
+{
+// Make sure the clock is stopped
+stopclock();
+time();
+}
+
+function stopclock ()
+{
+if(timerRunning)
+clearTimeout(timerID);
+timerRunning = false;
+}
+
+function time ()
+{
+var now = new Date();
+var yr = now.getYear();
+var mName = now.getMonth() + 1;
+var dName = now.getDay() + 1;
+var dayNr = ((now.getDate()<10) ? "0" : "")+ now.getDate();
+var ampm = (now.getHours() >= 12) ? " P.M." : " A.M."
+var hours = now.getHours();
+hours = ((hours > 12) ? hours - 12 : hours);
+var minutes = ((now.getMinutes() < 10) ? ":0" : ":") + now.getMinutes();
+var seconds = ((now.getSeconds() < 10) ? ":0" : ":") + now.getSeconds();
+
+if(dName==1) Day = "�����������";
+if(dName==2) Day = "�����������";
+if(dName==3) Day = "�������";
+if(dName==4) Day = "�����";
+if(dName==5) Day = "�������";
+if(dName==6) Day = "�������";
+if(dName==7) Day = "�������";
+
+if(mName==1) Month="������";
+if(mName==2) Month="�������";
+if(mName==3) Month="����";
+if(mName==4) Month="������";
+if(mName==5) Month="���";
+if(mName==6) Month="����";
+if(mName==7) Month="����";
+if(mName==8) Month="������";
+if(mName==9) Month="��������";
+if(mName==10) Month="�������";
+if(mName==11) Month="������";
+if(mName==12) Month="�������";
+
+// String to display current date.
+var DayOfWeek =(" "
++ Day
++ " ");
+// Displays the current time.
+document.forms[0].elements[0].value = DayOfWeek;
+
+// String to display month, day, & year.
+var MonthDayYear =(" "
++ Month
++ " "
++ dayNr
++ ", "
++ yr
++ " ");
+// Displays the month, day, & year.
+document.forms[0].elements[1].value = MonthDayYear;
+
+// String to display current time.
+var TimeValue =(" "
++ hours
++ minutes
++ seconds
++ " "
++ ampm);
+// Displays the current time.
+document.forms[0].elements[2].value = TimeValue;
+
+timerID = setTimeout("time()",1000);
+timerRunning = true;
+}
+// Deactivate Cloaking -->
+</SCRIPT>
+
+<body>
+
+
+
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Original: Bill Dortch, hIdaho Design (bdortch@netw.com)
+
+<!-- This script and many more are available free online at -->
+<!-- The JavaScript Source!! http://javascript.internet.com -->
+
+<!-- Begin 
+function getCookieVal (offset) {
+var endstr = document.cookie.indexOf (";", offset);
+if (endstr == -1)
+endstr = document.cookie.length;
+return unescape(document.cookie.substring(offset, endstr));
+}
+function GetCookie (name) {
+var arg = name + "=";
+var alen = arg.length;
+var clen = document.cookie.length;
+var i = 0;
+while (i < clen) {
+var j = i + alen;
+if (document.cookie.substring(i, j) == arg)
+return getCookieVal (j);
+i = document.cookie.indexOf(" ", i) + 1;
+if (i == 0) 
+break; 
+}
+return null;
+}
+function SetCookie (name, value) {
+var argv = SetCookie.arguments;
+var argc = SetCookie.arguments.length;
+var expires = (2 < argc) ? argv[2] : null;
+var path = (3 < argc) ? argv[3] : null;
+var domain = (4 < argc) ? argv[4] : null;
+var secure = (5 < argc) ? argv[5] : false;
+document.cookie = name + "=" + escape (value) +
+((expires == null) ? "" : ("; expires=" + expires.toGMTString())) +
+((path == null) ? "" : ("; path=" + path)) +
+((domain == null) ? "" : ("; domain=" + domain)) +
+((secure == true) ? "; secure" : "");
+}
+function DisplayInfo() {
+var expdate = new Date();
+var visit;
+expdate.setTime(expdate.getTime() + (24 * 60 * 60 * 1000 * 365)); 
+if(!(visit = GetCookie("visit"))) 
+visit = 0;
+visit++;
+SetCookie("visit", visit, expdate, "/", null, false);
+var message;
+if(visit == 1) 
+message=" ����� ���������� �� ��������� ������� � ���������!";
+if(visit== 2) 
+message=" � ������ ����� ��";
+if(visit == 3) 
+message=" ��� ���������� ��� ����?";
+if(visit == 4)
+message="��������� ������ �� �� ���� 897573857385 ���� ��� ���������� ��� ����"; 
+if(visit == 5) 
+message="����� ����� 897573857385";
+if(visit == 6) 
+message=" ��������� 897573857385";
+if(visit == 7)
+message="��"; 
+if(visit == 8) 
+message="������";
+if(visit == 9)
+message="������ ����� ���� ������ � ���������"; 
+if(visit >= 10) 
+message=" :(((((";
+alert("\n"+"��� ������� ������� ��� �������� \n"
++" "+visit+"\n"
++" time(s)."+"\n"+"\n"
++message);
+}
+function ResetCounts() {
+var expdate = new Date();
+expdate.setTime(expdate.getTime() + (24 * 60 * 60 * 1000 * 365)); 
+visit = 0;
+SetCookie("visit", visit, expdate , "/", null, false);
+history.go(0);
+}
+// End -->
+</Script>
+
+
+
+
+
+
+
+
+<SCRIPT LANGUAGE="JavaScript">
+document.write("������, " + Who() + ". �� ���� ����� ��� " + Count() + " ���(�). ��������� ��� " + When() +".");
+</SCRIPT> 
+
+
+
+<body onload="DisplayInfo()">
+
+
+
+
+
+
+
+
+ <body onload="show5()">
+<span id="liveclock" style="position:absolute;left:0;top:0;">
+</span>
+
+<script language="JavaScript">
+<!--
+
+/*
+Upper Left Corner Live Clock Script- 
+� Dynamic Drive (www.dynamicdrive.com)
+For full source code, installation instructions,
+100's more DHTML scripts, and Terms Of
+Use, visit dynamicdrive.com
+*/
+
+function show5(){
+if (!document.layers&&!document.all)
+return
+var Digital=new Date()
+var hours=Digital.getHours()
+var minutes=Digital.getMinutes()
+var seconds=Digital.getSeconds()
+var dn="AM" 
+if (hours>12){
+dn="PM"
+hours=hours-12
+}
+if (hours==0)
+hours=12
+if (minutes<=9)
+minutes="0"+minutes
+if (seconds<=9)
+seconds="0"+seconds
+//�������� ����� ����� �� ������ �������
+myclock="<font size='5' face='Arial' ><b><font size='1'>������� �����:</font></br>"+hours+":"+minutes+":"
++seconds+" "+dn+"</b></font>"
+if (document.layers){
+document.layers.liveclock.document.write(myclock)
+document.layers.liveclock.document.close()
+}
+else if (document.all)
+liveclock.innerHTML=myclock
+setTimeout("show5()",1000)
+}
+
+//-->
+</script> 
+
+
+
+<FORM>
+<CENTER>
+<INPUT NAME="update" TYPE="BUTTON" VALUE="�������� ��������" OnClick="history.go(0)">
+<INPUT NAME="reset" TYPE="BUTTON" VALUE="�������� �������" OnClick="ResetCounts()">
+</CENTER>
+</FORM> 
+
+
+
+
+<center> <SCRIPT LANGUAGE="JavaScript">
+
+<!-- This script and many more are available free online at -->
+<!-- The JavaScript Source!! http://javascript.internet.com -->
+
+<!-- Begin
+monthnames = new Array(
+"������",
+"�������",
+"����",
+"������",
+"���",
+"����",
+"����",
+"������",
+"��������",
+"�������",
+"������",
+"�������");
+var linkcount=0;
+function addlink(month, day, href) {
+var entry = new Array(3);
+entry[0] = month;
+entry[1] = day;
+entry[2] = href;
+this[linkcount++] = entry;
+}
+Array.prototype.addlink = addlink;
+linkdays = new Array();
+monthdays = new Array(12);
+monthdays[0]=31;
+monthdays[1]=28;
+monthdays[2]=31;
+monthdays[3]=30;
+monthdays[4]=31;
+monthdays[5]=30;
+monthdays[6]=31;
+monthdays[7]=31;
+monthdays[8]=30;
+monthdays[9]=31;
+monthdays[10]=30;
+monthdays[11]=31;
+todayDate=new Date();
+thisday=todayDate.getDay();
+thismonth=todayDate.getMonth();
+thisdate=todayDate.getDate();
+thisyear=todayDate.getYear();
+thisyear = thisyear % 100;
+thisyear = ((thisyear < 50) ? (2000 + thisyear) : (1900 + thisyear));
+if (((thisyear % 4 == 0) 
+&& !(thisyear % 100 == 0))
+||(thisyear % 400 == 0)) monthdays[1]++;
+startspaces=thisdate;
+while (startspaces > 7) startspaces-=7;
+startspaces = thisday - startspaces + 1;
+if (startspaces < 0) startspaces+=7;
+document.write("<table border=2 bgcolor=\"#CCCCCC\" ");
+document.write("bordercolor=black><font color=black>");
+document.write("<tr><td colspan=7><center><strong>" 
++ monthnames[thismonth] + " " + thisyear 
++ "</strong></center></font></td></tr>");
+document.write("<tr>");
+document.write("<td align=center>��</td>");
+document.write("<td align=center>��</td>");
+document.write("<td align=center>��</td>");
+document.write("<td align=center>��</td>");
+document.write("<td align=center>��</td>");
+document.write("<td align=center>��</td>");
+document.write("<td align=center>��</td>"); 
+document.write("</tr>");
+document.write("<tr>");
+for (s=0;s<startspaces;s++) {
+document.write("<td> </td>");
+}
+count=1;
+while (count <= monthdays[thismonth]) {
+for (b = startspaces;b<7;b++) {
+linktrue=false;
+document.write("<td>");
+for (c=0;c<linkdays.length;c++) {
+if (linkdays[c] != null) {
+if ((linkdays[c][0]==thismonth + 1) && (linkdays[c][1]==count)) {
+document.write("<a href=\"" + linkdays[c][2] + "\">");
+linktrue=true;
+}
+}
+}
+if (count==thisdate) {
+document.write("<font color='FF0000'><strong>");
+}
+if (count <= monthdays[thismonth]) {
+document.write(count);
+}
+else {
+document.write(" ");
+}
+if (count==thisdate) {
+document.write("</strong></font>");
+}
+if (linktrue)
+document.write("</a>");
+document.write("</td>");
+count++;
+}
+document.write("</tr>");
+document.write("<tr>");
+startspaces=0;
+}
+document.write("</table></p>");
+// End -->
+</SCRIPT>
+</CENTER> 
+
+
+
+
+
+<body onLoad="startclock ()">
+
+
+
+
+
+
+
+
+
+
+
+<CENTER>
+</p>
+</font>
+<FORM>
+<TABLE BORDER=3 WIDTH=500>
+<TR>
+<TD align="center"><font color="800000" size="+1"><strong>���� ������</strong></font>
+<font size="3" color="#000000">
+<TD align="center"><INPUT TYPE="text" NAME="local" SIZE=13 VALUE="���� ���.">
+</TR>
+<TR>
+<TD align="center"><font color="800000" size="+1"><strong>�����, ����
+� ���</strong></font>
+<font size="3" color="#000000">
+</font>
+<TD align="center"><INPUT TYPE="text" NAME="local" SIZE=18 VALUE="�����, ���� � ���">
+</TR>
+<TR>
+<TD align="center"><font color="800000" size="+1"><strong>�������
+�����</strong></font>
+<font size="3" color="#000000">
+<TD align="center"><INPUT TYPE="text" NAME="local" SIZE=16 VALUE="�����">
+</TR>
+</TABLE>
+<BR>
+<TABLE BORDER=0 WIDTH=400>
+<TR>
+<TD align="center"><INPUT TYPE="button" value="�����" onClick="stopclock()"> 
+<TD align="center"><INPUT TYPE="button" value="����������" onClick="startclock()">
+<TD align="center"><INPUT TYPE="reset" value="��������">
+</TR>
+</TABLE>
+</FORM>
+</CENTER> 
+
+
+</body>
+</head>
+</html>
